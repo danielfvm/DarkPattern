@@ -31,11 +31,11 @@ export default function Home() {
       title: "Hidden Costs",
       content: "Concealing or obscuring additional fees, charges, or conditions until late in the purchasing process.",
     },
-    {
+    /*{
       target: ".cookie-consent",
       title: "Misleading Cookie Consent",
       content: "Presenting cookie options in a way that makes it difficult or unclear how to opt out, often using confusing language or design.",
-    },
+    },*/
   ];
 
   const fakeComments = [
