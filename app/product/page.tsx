@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {Header} from "../../components/Header"
 import {Footer} from "../../components/Footer"
 import {CountdownTimer} from "../../components/CountdownTimer"
@@ -15,6 +15,12 @@ export default function ProductPage() {
 
   const originalPrice = 33.33
   const discountedPrice = 9.99
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   const handleAddToCart = () => {
     addToCart({
@@ -76,7 +82,7 @@ export default function ProductPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <Image src="/trivial.jpg" alt="Product" className="w-full h-auto" />
+            <Image src="/DarkPattern/trivial.jpg" alt="Product" width={500} height={500} className="w-full h-auto" />
           </div>
           <div>
             <div className="misleading-discounts mb-4">
@@ -141,7 +147,7 @@ export default function ProductPage() {
           </p>
         </div>
 
-        <Joyride
+        {domLoaded && (<Joyride
           steps={steps}
           hideBackButton
           hideCloseButton
@@ -162,7 +168,7 @@ export default function ProductPage() {
               primaryColor: "#0d6efd",
             },
           }}
-        />
+        />)}
       </main>
       <Footer />
     </div>
