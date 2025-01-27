@@ -7,7 +7,6 @@ import {Footer} from "../../components/Footer"
 import {CountdownTimer} from "../../components/CountdownTimer"
 import {useCart} from "../../contexts/CartContext"
 import Joyride from "react-joyride"
-import Link from "next/link"
 import {redirect} from "next/navigation"
 
 export default function ProductPage() {
