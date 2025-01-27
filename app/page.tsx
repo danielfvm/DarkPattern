@@ -7,6 +7,7 @@ import {Footer} from "../components/Footer"
 import {CookieConsent} from "../components/CookieConsent"
 import {CountdownTimer} from "../components/CountdownTimer"
 import Joyride from "react-joyride"
+import {useEffect, useState} from "react"
 
 export default function Home() {
   const steps = [
@@ -43,6 +44,12 @@ export default function Home() {
     "Studying Algebra with this book is so trivial now, AMAZING!",
     "I can't believe how easy it is to solve maths problems with this book!",
   ]
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -98,7 +105,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Joyride
+        {(<Joyride
           steps={steps}
           hideBackButton
           hideCloseButton
@@ -119,7 +126,7 @@ export default function Home() {
               primaryColor: "#0d6efd",
             },
           }}
-        />
+        />)}
       </main>
       <Footer />
       <CookieConsent />

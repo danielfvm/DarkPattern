@@ -5,7 +5,6 @@ import {Footer} from "../../components/Footer"
 import {CountdownTimer} from "../../components/CountdownTimer"
 import {useCart} from "../../contexts/CartContext"
 import Joyride from "react-joyride"
-import {useState} from "react"
 
 export default function CartPage() {
   const {cart, removeFromCart, clearCart} = useCart()
