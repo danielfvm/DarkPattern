@@ -1,101 +1,129 @@
-import Image from "next/image";
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import {Header} from "../components/Header"
+import {Footer} from "../components/Footer"
+import {CookieConsent} from "../components/CookieConsent"
+import {CountdownTimer} from "../components/CountdownTimer"
+import Joyride from "react-joyride"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const steps = [
+    {
+      target: ".false-urgency",
+      title: "False Urgency",
+      content: "Creating a sense of urgency to encourage immediate purchases, often using limited-time offers or countdowns.",
+    },
+    {
+      target: ".disguised-ad",
+      title: "Disguised Advertisement",
+      content: "Advertisements that are designed to look like other types of content, such as news articles or user-generated content.",
+    },
+    {
+      target: ".fake-reviews",
+      title: "Fake Reviews",
+      content: "Presenting fabricated or manipulated user reviews to create a false impression of product quality or popularity.",
+    },
+    {
+      target: ".hidden-costs",
+      title: "Hidden Costs",
+      content: "Concealing or obscuring additional fees, charges, or conditions until late in the purchasing process.",
+    },
+    {
+      target: ".cookie-consent",
+      title: "Misleading Cookie Consent",
+      content: "Presenting cookie options in a way that makes it difficult or unclear how to opt out, often using confusing language or design.",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const fakeComments = [
+    "This book changed my life! I can't imagine writing an exam without it now!",
+    "This book is amazing! Studied for 2 hours and instantly passed Gittenberger exam!",
+    "Studying Algebra with this book is so trivial now, AMAZING!",
+    "I can't believe how easy it is to solve maths problems with this book!",
+  ]
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-8 text-center">Welcome to DarkPatterns'R'Us!</h1>
+
+        <div className="false-urgency">
+          <CountdownTimer />
         </div>
+
+        <div className="disguised-ad mb-8 p-4 border border-gray-300 rounded">
+          <h2 className="text-2xl font-bold mb-4">Breaking News!</h2>
+          <p className="mb-4">
+            Scientists discovered that people who don't buy our book are 100% more likely to fail ADM!
+          </p>
+          <Link href="/product" className="text-blue-500 underline">
+            Learn More
+          </Link>
+        </div>
+
+        <div className="fake-reviews mb-8">
+          <h2 className="text-2xl font-bold mb-4">What Our "Real" Customers Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="p-4 border border-gray-300 rounded">
+                <div className="flex items-center mb-2">
+                  <Image
+                    src={`https://randomuser.me/api/portraits/men/${i}.jpg`}
+                    alt={`User ${i}`}
+                    width={40}
+                    height={40}
+                    className="rounded-full mr-2"
+                  />
+                  <span className="font-bold">Totally Real User {i}</span>
+                </div>
+                <p>"{fakeComments[i - 1]}"</p>
+                <div className="text-yellow-500 mt-2">★★★★★</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+
+        <div className="hidden-costs mb-8 bg-green-200 p-4 rounded">
+          <h2 className="text-2xl font-bold mb-4">Unbeatable Prices!</h2>
+          <p className="mb-4">Products starting at just $9.99*</p>
+          <Link href="/product" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            Shop Now
+          </Link>
+          <p className="text-xs mt-2">
+            *Additional fees, taxes, shipping, handling, and your eternal loyalty may apply.
+          </p>
+        </div>
+
+        <Joyride
+          steps={steps}
+          hideBackButton
+          hideCloseButton
+          styles={{
+            overlay: {
+              backgroundColor: "#222",
+            },
+            tooltipTitle: {
+              fontWeight: "bold",
+              fontSize: "1.5em",
+              color: "black",
+            },
+            options: {
+              arrowColor: "#fff",
+              backgroundColor: "#fff",
+              textColor: "black",
+              overlayColor: "rgba(0, 0, 0, 0.5)",
+              primaryColor: "#0d6efd",
+            },
+          }}
+        />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
+      <CookieConsent />
     </div>
-  );
+  )
 }
+
