@@ -27,8 +27,8 @@ export default function CartPage() {
   const handling = 20
   const processing = 15
   const existentialFee = 10
-  const becauseWeCanFee = 5
-  const total = subtotal + shipping + handling + processing + existentialFee + becauseWeCanFee
+  const additionalFee = 25
+  const total = subtotal + shipping + handling + processing + existentialFee + additionalFee
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -69,7 +69,7 @@ export default function CartPage() {
               </tbody>
             </table>
 
-            <div className="hidden-costs mb-8">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
               <div className="flex justify-between mb-2">
                 <span>Subtotal:</span>
@@ -91,9 +91,9 @@ export default function CartPage() {
                 <span>Existential Fee:</span>
                 <span>${existentialFee.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between mb-2">
-                <span>Because We Can Fee:</span>
-                <span>${becauseWeCanFee.toFixed(2)}</span>
+              <div className="hidden-costs flex justify-between mb-2">
+                <span>Additional Fee:</span>
+                <span>${additionalFee.toFixed(2)}</span>
               </div>
               <div className="flex justify-between font-bold text-lg mt-4">
                 <span>Total:</span>

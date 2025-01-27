@@ -148,11 +148,10 @@ export default function ProductPage() {
             <li>Handling: $20.00</li>
             <li>Processing: $15.00</li>
             <li>Existential Fee: $10.00</li>
-            <li>Because We Can Fee: $5.00</li>
             {addWarranty && <li>Premium Warranty: $29.99</li>}
           </ul>
           <p className="font-bold mt-2">
-            Total: ${((discountedPrice + 50 + 20 + 15 + 10 + 5 + (addWarranty ? 29.99 : 0)) * quantity).toFixed(2)}
+            Total: ${((discountedPrice + 50 + 20 + 15 + 10 + (addWarranty ? 29.99 : 0)) * quantity).toFixed(2)}
           </p>
         </div>
 
