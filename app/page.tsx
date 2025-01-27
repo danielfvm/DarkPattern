@@ -105,7 +105,7 @@ export default function Home() {
           </p>
         </div>
 
-        {(<Joyride
+        {domLoaded && (<Joyride
           steps={steps}
           hideBackButton
           hideCloseButton
