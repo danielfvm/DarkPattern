@@ -105,7 +105,7 @@ export default function CartPage() {
               <button onClick={clearCart} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                 Clear Cart
               </button>
-              <button className="bg-green-500 text-white px-6 py-3 rounded text-xl font-bold hover:bg-green-600">
+              <button onClick={() => alert("Oh no. Looks like we currently have server issues. Maybe come back later?")} className="bg-green-500 text-white px-6 py-3 rounded text-xl font-bold hover:bg-green-600">
                 Proceed to Checkout*
               </button>
             </div>
