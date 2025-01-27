@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import {useState} from "react"
 import {Header} from "../../components/Header"
 import {Footer} from "../../components/Footer"
@@ -75,7 +76,7 @@ export default function ProductPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <img src="/trivial.jpg" alt="Product" className="w-full h-auto" />
+            <Image src="/trivial.jpg" alt="Product" className="w-full h-auto" />
           </div>
           <div>
             <div className="misleading-discounts mb-4">

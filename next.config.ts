@@ -1,9 +1,11 @@
 import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  basePath: "/DarkPattern",
+  output: "export",
   images: {
     remotePatterns: [{protocol: 'https', hostname: 'randomuser.me'}],
+    unoptimized: true
   }
 };
 

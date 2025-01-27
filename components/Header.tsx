@@ -5,7 +5,6 @@ import Link from "next/link"
 export function Header() {
   return (
     <header className="bg-gray-800 text-white p-4">
-      <div className="text-center mb-2 text-3xl font-bold animate-pulse">MEGA SALE! 70% OFF EVERYTHING!*</div>
       <nav className="flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">
           DarkPatterns'R'Us
@@ -22,7 +21,7 @@ export function Header() {
           </Link>
         </div>
       </nav>
-      <div className="text-xs text-right">*Up to 70% off select items. Terms and conditions apply.</div>
+      <div className="text-center mb-2 text-3xl font-bold animate-pulse">MEGA SALE! 70% OFF EVERYTHING!*</div>
     </header>
   )
 }
